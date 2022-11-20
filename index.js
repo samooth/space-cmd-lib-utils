@@ -27,18 +27,23 @@ function resolveToKey(name) {
 
   paths.forEach(d => {
     const fn = path.join(d, '.hyper-hosts')
-    console.log('reading', fn)
+
     if (!fs.existsSync(fn)) {
       return
     }
 
-    let data = fs.readFileSync(fn, 'utf8')
-      || ''
+    let data = null
+
+    try {
+      fs.readFileSync(fn, 'utf8') || ''
+    } catch (e) {
+      return
+    }
 
     found = data.split("\n")
   })
 
-  return data.filter(l => {
+  return found.filter(l => {
     return l.startsWith(name)
   })[0] || name
 }
