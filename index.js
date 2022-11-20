@@ -37,7 +37,7 @@ function resolveToKey(name) {
 
   return data.filter(l => {
     return l.startsWith(name)
-  })[0]
+  })[0] || name
 }
 
 module.exports = {
