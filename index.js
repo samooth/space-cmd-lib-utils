@@ -1,6 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 
+const PATHS_SEARCH = ['./', '~/', '/etc']
+
 function readConf (_conf, fp) {
   let conf = _conf || {}
 
@@ -20,28 +22,46 @@ function readConf (_conf, fp) {
   return conf
 }
 
-function resolveToKey(name) {
+function findFileInPath (paths_aux, sfx) {
   let found = null
 
-  const paths = ['./', '~/', '/etc']
+  let paths = PATHS_SEARCH
+
+  if (paths_aux) {
+    paths = paths.concat(paths_aux)
+  }
 
   paths.forEach(d => {
+    if (found) {
+      return
+    }
+
     const fn = path.join(d, '.hyper-hosts')
 
     if (!fs.existsSync(fn)) {
       return
     }
 
-    let data = null
-
     try {
-      fs.readFileSync(fn, 'utf8') || ''
-    } catch (e) {
-      return
-    }
-
-    found = data.split("\n")
+      found = fs.readFileSync(fn, 'utf8')
+    } catch (e) {}
   })
+
+  return found
+}
+
+function resolveHostToKey(paths_aux, name) {
+  let found = findFileInPath(paths_aux, '.hyper-hosts')
+
+  if (!found) {
+    return name
+  }
+
+  try {
+    found = (found || '').split("\n")
+  } catch (e) {
+    return name
+  }
 
   if (!Array.isArray(found)) {
     return name
@@ -50,6 +70,10 @@ function resolveToKey(name) {
   return found.filter(l => {
     return l.startsWith(name)
   })[0] || name
+}
+
+function resolveIdentity(paths_aux) {
+  return findFileInPath(paths_aux, '.hyper-id')
 }
 
 module.exports = {
