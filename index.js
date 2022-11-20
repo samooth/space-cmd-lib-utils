@@ -25,7 +25,7 @@ function resolveToKey(name) {
 
   ['./', '~/', '/etc'].forEach(d => {
     const path = path.join(d, '.hyper-hosts')
-
+    console.log('reading', path)
     if (!fs.existsSync(path)) {
       return
     }
