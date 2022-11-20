@@ -43,6 +43,10 @@ function resolveToKey(name) {
     found = data.split("\n")
   })
 
+  if (!Array.isArray(found)) {
+    return name
+  }
+
   return found.filter(l => {
     return l.startsWith(name)
   })[0] || name
