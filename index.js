@@ -26,13 +26,13 @@ function resolveToKey(name) {
   const paths = ['./', '~/', '/etc']
 
   paths.forEach(d => {
-    const path = path.join(d, '.hyper-hosts')
-    console.log('reading', path)
-    if (!fs.existsSync(path)) {
+    const fn = path.join(d, '.hyper-hosts')
+    console.log('reading', fn)
+    if (!fs.existsSync(fn)) {
       return
     }
 
-    let data = fs.readFileSync(path, 'utf8')
+    let data = fs.readFileSync(fn, 'utf8')
       || ''
 
     found = data.split("\n")
