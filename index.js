@@ -23,14 +23,17 @@ function readConf (_conf, fp) {
 function resolveToKey(name) {
   let found = null
 
-  ['./', '~/', '/etc'].forEach(d => {
+  const paths = ['./', '~/', '/etc']
+
+  paths.forEach(d => {
     const path = path.join(d, '.hyper-hosts')
     console.log('reading', path)
     if (!fs.existsSync(path)) {
       return
     }
 
-    let data = fs.readFileSync(path)
+    let data = fs.readFileSync(path, 'utf8')
+      || ''
 
     found = data.split("\n")
   })
