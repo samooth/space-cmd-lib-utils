@@ -78,5 +78,6 @@ function resolveIdentity(paths_aux) {
 
 module.exports = {
   readConf: readConf,
-  resolveToKey: resolveToKey
+  resolveHostToKey: resolveHostToKey,
+  resolveIdentity: resolveIdentity
 }
