@@ -93,7 +93,7 @@ function resolveIdentity (paths_aux, fp) {
     }
   }
 
-  return findFileInPath(paths_aux, '.hyper-id')
+  return findFileInPath(paths_aux, '.hyper-id.json')
 }
 
 module.exports = {
