@@ -52,7 +52,7 @@ function findFileInPath (paths_aux, sfx) {
   return found
 }
 
-function resolveHostToKey(paths_aux, name) {
+function resolveHostToKey (paths_aux, name) {
   let found = findFileInPath(paths_aux, '.hyper-hosts')
 
   if (!found) {
@@ -80,8 +80,20 @@ function resolveHostToKey(paths_aux, name) {
   return match ? match[1] : name
 }
 
-function resolveIdentity(paths_aux, name) {
-  return findFileInPath(paths_aux, name || '.hyper-id')
+function resolveIdentity (paths_aux, fp) {
+  if (fp) {
+    if (!fs.existsSync(fp)) {
+      return
+    }
+
+    try {
+      return fs.readFileSync(fp, 'utf8')
+    } catch (e) {
+      return null
+    }
+  }
+
+  return findFileInPath(paths_aux, '.hyper-id')
 }
 
 module.exports = {
