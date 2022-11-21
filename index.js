@@ -80,8 +80,8 @@ function resolveHostToKey(paths_aux, name) {
   return match ? match[1] : name
 }
 
-function resolveIdentity(paths_aux) {
-  return findFileInPath(paths_aux, '.hyper-id')
+function resolveIdentity(paths_aux, name) {
+  return findFileInPath(paths_aux, name || '.hyper-id')
 }
 
 module.exports = {
