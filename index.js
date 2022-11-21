@@ -1,7 +1,9 @@
 const path = require('path')
 const fs = require('fs')
+const os = require('os')
 
-const PATHS_SEARCH = ['./', '~/', '/etc']
+const UINFO = os.userInfo()
+const PATHS_SEARCH = ['./', `/home/${UINFO.username}`, `Users/${UINFO.username}`, '/etc']
 
 function readConf (_conf, fp) {
   let conf = _conf || {}
