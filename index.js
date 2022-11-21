@@ -67,9 +67,15 @@ function resolveHostToKey(paths_aux, name) {
     return name
   }
 
-  return found.filter(l => {
-    return l.startsWith(name)
-  })[0] || name
+  found = found.map(r => {
+    return r.split(' ')
+  })
+
+  const match = found.filter(l => {
+    return l[0] === name
+  })[0]
+
+  return match ? match[1] : name
 }
 
 function resolveIdentity(paths_aux) {
