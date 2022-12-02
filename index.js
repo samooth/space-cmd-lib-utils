@@ -6,7 +6,7 @@ const UINFO = os.userInfo()
 const PATHS_SEARCH = ['./', `/home/${UINFO.username}`, `Users/${UINFO.username}`, '/etc']
 
 function readConf (_conf, fp) {
-  let conf = _conf || {}
+  const conf = _conf || {}
 
   let cf = null
 
@@ -24,13 +24,13 @@ function readConf (_conf, fp) {
   return conf
 }
 
-function findFileInPath (paths_aux, sfx) {
+function findFileInPath (auxPaths, sfx) {
   let found = null
 
   let paths = PATHS_SEARCH
 
-  if (paths_aux) {
-    paths = paths.concat(paths_aux)
+  if (auxPaths) {
+    paths = paths.concat(auxPaths)
   }
 
   paths.forEach(d => {
@@ -52,15 +52,15 @@ function findFileInPath (paths_aux, sfx) {
   return found
 }
 
-function resolveHostToKey (paths_aux, name) {
-  let found = findFileInPath(paths_aux, '.hyper-hosts')
+function resolveHostToKey (auxPaths, name) {
+  let found = findFileInPath(auxPaths, '.hyper-hosts')
 
   if (!found) {
     return name
   }
 
   try {
-    found = (found || '').split("\n")
+    found = (found || '').split('\n')
   } catch (e) {
     return name
   }
@@ -80,7 +80,7 @@ function resolveHostToKey (paths_aux, name) {
   return match ? match[1] : name
 }
 
-function resolveIdentity (paths_aux, fp) {
+function resolveIdentity (auxPaths, fp) {
   if (fp) {
     if (!fs.existsSync(fp)) {
       return
@@ -93,11 +93,11 @@ function resolveIdentity (paths_aux, fp) {
     }
   }
 
-  return findFileInPath(paths_aux, '.hyper-id.json')
+  return findFileInPath(auxPaths, '.hyper-id.json')
 }
 
 module.exports = {
-  readConf: readConf,
-  resolveHostToKey: resolveHostToKey,
-  resolveIdentity: resolveIdentity
+  readConf,
+  resolveHostToKey,
+  resolveIdentity
 }
