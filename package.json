@@ -1,19 +1,19 @@
 {
-  "name": "hyper-cmd-lib-utils",
+  "name": "space-cmd-lib-utils",
   "version": "0.0.1",
-  "description": "HyperCmd Utils lib",
+  "description": "SpaceCmd Utils lib",
   "main": "index.js",
   "dependencies": {
   },
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/holepunchto/hyper-cmd-lib-utils.git"
+    "url": "https://github.com/samooth/space-cmd-lib-utils.git"
   },
   "author": "Holepunch",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/holepunchto/hyper-cmd-lib-utils/issues"
+    "url": "https://github.com/samooth/space-cmd-lib-utils/issues"
   },
-  "homepage": "https://github.com/holepunchto/hyper-cmd-lib-utils"
+  "homepage": "https://github.com/samooth/space-cmd-lib-utils"
 }
