@@ -1,9 +1,9 @@
-# Hyper Cmd Lib Utils
+# Space Cmd Lib Utils
 
-Utility functions for working with hypercore identities.
+Utility functions for working with spacecore identities.
 
-See https://github.com/prdn/hyper-cmd-docs/blob/main/identity.md
+See https://github.com/samooth/space-cmd-docs/blob/main/identity.md
 
 ## Install
 
-`npm install -g hyper-cmd-utils`
+`npm install -g space-cmd-utils`

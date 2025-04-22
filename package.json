@@ -11,6 +11,12 @@
     "url": "https://github.com/samooth/space-cmd-lib-utils.git"
   },
   "author": "Holepunch",
+  "contributors": [
+    {
+      "name": "Tomás Díaz",
+      "email": "tomas@bsv.direct"
+    }
+  ],  
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/samooth/space-cmd-lib-utils/issues"
